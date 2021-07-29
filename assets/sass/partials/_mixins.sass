@@ -1,0 +1,12 @@
+///////////Typography
+@mixin font($size, $screen, $weight: $default_font_weight, $line_height: $default_line_height, $color: $default_font_color, $align: $default_text_align, $family: $default_font_family)
+    font-size: cav($size, $screen)
+    font-weight: $weight
+    line-height: $line_height
+    color: $color
+    text-align: $align
+    font-family: $family
+
+@mixin shadowblock()
+    border-radius: $default_rounding
+    box-shadow: $default_shadow_x $default_shadow_y $default_shadow_blur $sherlock_shadow_1

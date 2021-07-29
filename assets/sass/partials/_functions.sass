@@ -1,0 +1,7 @@
+///
+// Returns vw in relation to screen
+///
+@function cav($measure, $screen)
+    $vpw: ($measure / $screen) * 100vw
+    $vpw: $vpw * $cav_correction
+    @return $vpw

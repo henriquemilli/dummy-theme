@@ -1,0 +1,25 @@
+{
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "/"
+        },
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "/"
+        }
+    ],
+
+    "emeraldwalk.runonsave": {
+
+        "commands": [
+            {
+                "match": ".*/dummy-theme/.*",
+                "cmd": "sh ~/Github/dummy-theme/onsave.sh"
+            }
+        ]
+    }
+
+}
