@@ -15,6 +15,7 @@
 1. Run 
         docker-compose up
 2. Use the file __onsave.sh__ so your changes will be automagically pushed to your volume on every save
+    sudo chmod +x onsave.sh
 3. If you're coding with __visual studio code__ install the extensions and copy the following to __.vscode/settings.json__
         {
             "liveSassCompile.settings.formats": [
