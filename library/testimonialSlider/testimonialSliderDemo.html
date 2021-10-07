@@ -1,0 +1,561 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    #slider-wrapper {
+        font-family: "Poppins";
+        font-size: 16px;
+        font-weight: 400;
+        width: 100%;
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
+        height: fit-content;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .slider {
+        width: 85%;
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 5%;
+    }
+    .slider::-webkit-scrollbar {
+        display: none;
+    }
+    .review {
+        min-width: 90%;
+        height: auto;
+        white-space: normal;
+        margin-right: 10%;
+        box-shadow: 0 3px 21px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        padding: 5%;
+        background-color: white;
+    }
+    .company-logo-wrapper {
+        width: 100%;
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
+        height: fit-content;
+        display: flex;
+        justify-content: flex-start;
+    }
+    .company-logo {
+        min-width: 115px;
+        min-height: 36px;
+        margin-bottom: 0;
+    }
+    .author-row {
+        margin-top: 1rem;
+        width: 100%;
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
+        height: fit-content;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .author-figure {
+        min-width: 40px;
+        min-height: 40px;
+        border-radius: 50%;
+        background-color: gray;
+    }
+    .author-name {
+        margin-left: 15px;
+        font-weight: 700;
+    }
+    .slider-button-wrapper {
+        width: 100%;
+    }
+    </style>
+    <div id="slider-wrapper">
+        <div class="slider">
+            <article class="review">
+                <div class="company-logo-wrapper"><img class="company-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKIAAABkCAMAAAAynRuAAAACW1BMVEUAAAD///+AgICqqqq/v7/MzMyqqqq2tra/v7+qxsazs7O5ubm/v7+xscS2travv7+0tMO8vLyzv7+5ubmxvLy1tb+4uMK6urqzvb22tr+5ubmzu7u1tb23t7+5ubm0vLy2tr24uL+zurq1vLy5ub+0u7u2try4uL60ub+1u7u3t7y4uL64uL20ub61ur+4uL22u7+3t7y0ub22ur64uLy0uLy2ub23ur64uLy1uby2ur23u761uLy3ur64uL61uby2ub23ur61uL63ur21uL63ur21uL62uby3uby3ur21uL23uby3ur22ub63ub63ury2ub23ub61ury2ub23ub62uL23ub61ury2uLy2ub23ub62ury2uL22ury1ub22ur61ub22ur62uLy1ub22ub22uL63uby1ub22ur22uL61uby2ur21ub22ub22uL21uby2ur21uby2ub22ur22uby3uL21ub62uby2ur21uL22ub63ur22ub62ub21uL22ub22ub62ub22ub21ur22ub22ub22uL22ub21ury2ub22ub23ub62uLy2ub21ub62uL22ub23ub22ur62ub22ub21ub22uL62ub23ub22uby2ub21ub22ur23ub22ub22uL22uby1ub22ub22ur21ub22ub22uL22ub22ub22ub22ub21ub62ub22ub22ub62ub22ub22uby2ub22ub22ub22uL22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub1USzZ3AAAAyHRSTlMAAQIDBAUGBwgJCgsMDQ4QERMUFhcYGRobHB0eHyAhIiMkJSYoKSorLC0uLzIzNDY4OTo7PUFCQ0RFRkdISktMTU5PUVNVVldYWV1fYGJmZ2lqa21ucHFyc3R1dnd6fH2AgYKDhIWGh4iJioyOj5CRk5WWl5mbnJ2en6CipKWmp6iqq62ur7GztLW2t7i5u7y9vr/AwcLDxMXHyMnKzM3Oz9DR1dfY2drb3N3e3+Hi4+Xm5+jq6+zt7u/w8fP09fb3+Pn6+/z9/kzG6qcAAAABYktHRAH/Ai3eAAAD5klEQVRo3u2ZZ1sTQRCAJwEJROy9YkdUbNg7ig0F7NgLKold7F1j74goinqIgoK9V1BRI5mf5d7lEuaO5KJBn9yHeb8w7GyG99nb7O4tAAzDMAzDMAzDMAzDMAzDhEXHrxgId6J5FI9jYC6bxjDFE0QRx5vE0CoFM8RKmzkUszA42aYwbPraQLGqjRkUN6MRu0xg2P27oWJtcuQVz6ExNyyRNhyNoZgaYcNG5XTAXD4KSevTuP/xh51esmC9N7A5nCkAnZzOsWpmhK/nQuLyzO4vEPOAtK/0Nw9yrvaFqTv2ZcXookl5vig0au1r8MMbQD6eB1iNbyeomVVqx5afiMp0UmE8af/SwdeaiZ/VwT8lJ8rb0ij6hBw9aPdnii5XEeJJ1xqheFt+bjAD3W0sj3FjP5frIb53udLUjjuJSZHme3GeZA7VU5yDKF324EElKvFGWXJUW9c5FGIUmogfPzBd+dX2HrOHoaeHsgwW+3v1+0VWlwGaAr1+1qU8Q/SKlzDfAuuwSo3WytEFLLBADlZbwlOELVi6G/NBp1hAhmqPrsIWkrtj1SneRSfAZMQ4EW0Q01GOJNwopiNi4zAVExFrcJpOMY3udK11FZq9JdlZOsVSzFXE7CJyANgTEixQImtPRIwPUxGKEd/ZtIq2SiKx2PB08aapoaJC2IpnxBIzSEQZKD8RjeIK4lBRf7GIukfyDgPF2GSBNXxFmUwRDUWcrVWMqSIKGQFqTCP5mibBFXvLHezhK8qLzijv8nJVN4q7iUJBgBqnSf6YwSh2e/y6QYrqXIwTa7Snp1ax1WfikFavxEiS/dbZcC6m/gvFdPxW7p2M5Bu9hEg8idVViC4j2TXw/xWv4pFF+KaRVjGmglis0FVYQHLP7fUUHX5Fp19xQ0MUu3lwXGu38jTp0j2JaFS31xRo8ZHkZup3l+t4GGA+/rRCkT8qxKMA89BtDWfRcYq96lU0nMWLOkW4SDwOagrkBTrVZuJ3udxkUe9XXs4nvAK+SGxcOVibl/NR/VL+7aKDUS9wE8BUrO2sU+xDd+LB5PNJdPceWHeMUNgOzZXDWrXY1uuiZsrR88sfv0ikSJI8f4olhWRJSgKIvSmJpTFb2k/6bSODdYscAK6Q9r3+1inecssA4h2lFQe6yG1ytN8b5ZZWHuj6zw+/zd8Rl53LfWw103vq3JDvLksj/XoVdT+E4aPI35kMD6GYaoJ3/ZOGhvlmuDBJqDEwdCeZ4t4p10Bxmzku7+JfBjX80MIkd6CzgirONctFsuV2EMOyaNNcdg8Octk9xkT/1eibHIj+wDAMwzAMwzAMwzAMwzBMA/gN26DVpjopEcQAAAAASUVORK5CYII="/></div>
+                <cite class="review-text">Ad oggi le migliori dashboard che ho trovato sul mercato. L’interfaccia è intuitiva e completa e consente di focalizzarsi sui dati realmente rilevanti risparmiando un sacco di tempo. Consiglio a tutti.</cite>
+                <div class="author-row"><div class="author-figure"></div><adress class="author-name"><stron>Carol Alexander 1</strong></adress></div>
+            </article>
+            
+            <article class="review">
+                <div class="company-logo-wrapper"><img class="company-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKIAAABkCAMAAAAynRuAAAACW1BMVEUAAAD///+AgICqqqq/v7/MzMyqqqq2tra/v7+qxsazs7O5ubm/v7+xscS2travv7+0tMO8vLyzv7+5ubmxvLy1tb+4uMK6urqzvb22tr+5ubmzu7u1tb23t7+5ubm0vLy2tr24uL+zurq1vLy5ub+0u7u2try4uL60ub+1u7u3t7y4uL64uL20ub61ur+4uL22u7+3t7y0ub22ur64uLy0uLy2ub23ur64uLy1uby2ur23u761uLy3ur64uL61uby2ub23ur61uL63ur21uL63ur21uL62uby3uby3ur21uL23uby3ur22ub63ub63ury2ub23ub61ury2ub23ub62uL23ub61ury2uLy2ub23ub62ury2uL22ury1ub22ur61ub22ur62uLy1ub22ub22uL63uby1ub22ur22uL61uby2ur21ub22ub22uL21uby2ur21uby2ub22ur22uby3uL21ub62uby2ur21uL22ub63ur22ub62ub21uL22ub22ub62ub22ub21ur22ub22ub22uL22ub21ury2ub22ub23ub62uLy2ub21ub62uL22ub23ub22ur62ub22ub21ub22uL62ub23ub22uby2ub21ub22ur23ub22ub22uL22uby1ub22ub22ur21ub22ub22uL22ub22ub22ub22ub21ub62ub22ub22ub62ub22ub22uby2ub22ub22ub22uL22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub1USzZ3AAAAyHRSTlMAAQIDBAUGBwgJCgsMDQ4QERMUFhcYGRobHB0eHyAhIiMkJSYoKSorLC0uLzIzNDY4OTo7PUFCQ0RFRkdISktMTU5PUVNVVldYWV1fYGJmZ2lqa21ucHFyc3R1dnd6fH2AgYKDhIWGh4iJioyOj5CRk5WWl5mbnJ2en6CipKWmp6iqq62ur7GztLW2t7i5u7y9vr/AwcLDxMXHyMnKzM3Oz9DR1dfY2drb3N3e3+Hi4+Xm5+jq6+zt7u/w8fP09fb3+Pn6+/z9/kzG6qcAAAABYktHRAH/Ai3eAAAD5klEQVRo3u2ZZ1sTQRCAJwEJROy9YkdUbNg7ig0F7NgLKold7F1j74goinqIgoK9V1BRI5mf5d7lEuaO5KJBn9yHeb8w7GyG99nb7O4tAAzDMAzDMAzDMAzDMAzDhEXHrxgId6J5FI9jYC6bxjDFE0QRx5vE0CoFM8RKmzkUszA42aYwbPraQLGqjRkUN6MRu0xg2P27oWJtcuQVz6ExNyyRNhyNoZgaYcNG5XTAXD4KSevTuP/xh51esmC9N7A5nCkAnZzOsWpmhK/nQuLyzO4vEPOAtK/0Nw9yrvaFqTv2ZcXookl5vig0au1r8MMbQD6eB1iNbyeomVVqx5afiMp0UmE8af/SwdeaiZ/VwT8lJ8rb0ij6hBw9aPdnii5XEeJJ1xqheFt+bjAD3W0sj3FjP5frIb53udLUjjuJSZHme3GeZA7VU5yDKF324EElKvFGWXJUW9c5FGIUmogfPzBd+dX2HrOHoaeHsgwW+3v1+0VWlwGaAr1+1qU8Q/SKlzDfAuuwSo3WytEFLLBADlZbwlOELVi6G/NBp1hAhmqPrsIWkrtj1SneRSfAZMQ4EW0Q01GOJNwopiNi4zAVExFrcJpOMY3udK11FZq9JdlZOsVSzFXE7CJyANgTEixQImtPRIwPUxGKEd/ZtIq2SiKx2PB08aapoaJC2IpnxBIzSEQZKD8RjeIK4lBRf7GIukfyDgPF2GSBNXxFmUwRDUWcrVWMqSIKGQFqTCP5mibBFXvLHezhK8qLzijv8nJVN4q7iUJBgBqnSf6YwSh2e/y6QYrqXIwTa7Snp1ax1WfikFavxEiS/dbZcC6m/gvFdPxW7p2M5Bu9hEg8idVViC4j2TXw/xWv4pFF+KaRVjGmglis0FVYQHLP7fUUHX5Fp19xQ0MUu3lwXGu38jTp0j2JaFS31xRo8ZHkZup3l+t4GGA+/rRCkT8qxKMA89BtDWfRcYq96lU0nMWLOkW4SDwOagrkBTrVZuJ3udxkUe9XXs4nvAK+SGxcOVibl/NR/VL+7aKDUS9wE8BUrO2sU+xDd+LB5PNJdPceWHeMUNgOzZXDWrXY1uuiZsrR88sfv0ikSJI8f4olhWRJSgKIvSmJpTFb2k/6bSODdYscAK6Q9r3+1inecssA4h2lFQe6yG1ytN8b5ZZWHuj6zw+/zd8Rl53LfWw103vq3JDvLksj/XoVdT+E4aPI35kMD6GYaoJ3/ZOGhvlmuDBJqDEwdCeZ4t4p10Bxmzku7+JfBjX80MIkd6CzgirONctFsuV2EMOyaNNcdg8Octk9xkT/1eibHIj+wDAMwzAMwzAMwzAMwzBMA/gN26DVpjopEcQAAAAASUVORK5CYII="/></div>
+                <cite class="review-text">Ad oggi le migliori dashboard che ho trovato sul mercato. L’interfaccia è intuitiva e completa e consente di focalizzarsi sui dati realmente rilevanti risparmiando un sacco di tempo. Consiglio a tutti.</cite>
+                <div class="author-row"><div class="author-figure"></div><adress class="author-name"><stron>Carol Alexander 2</strong></adress></div>
+            </article>
+            
+            <article class="review">
+                <div class="company-logo-wrapper"><img class="company-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKIAAABkCAMAAAAynRuAAAACW1BMVEUAAAD///+AgICqqqq/v7/MzMyqqqq2tra/v7+qxsazs7O5ubm/v7+xscS2travv7+0tMO8vLyzv7+5ubmxvLy1tb+4uMK6urqzvb22tr+5ubmzu7u1tb23t7+5ubm0vLy2tr24uL+zurq1vLy5ub+0u7u2try4uL60ub+1u7u3t7y4uL64uL20ub61ur+4uL22u7+3t7y0ub22ur64uLy0uLy2ub23ur64uLy1uby2ur23u761uLy3ur64uL61uby2ub23ur61uL63ur21uL63ur21uL62uby3uby3ur21uL23uby3ur22ub63ub63ury2ub23ub61ury2ub23ub62uL23ub61ury2uLy2ub23ub62ury2uL22ury1ub22ur61ub22ur62uLy1ub22ub22uL63uby1ub22ur22uL61uby2ur21ub22ub22uL21uby2ur21uby2ub22ur22uby3uL21ub62uby2ur21uL22ub63ur22ub62ub21uL22ub22ub62ub22ub21ur22ub22ub22uL22ub21ury2ub22ub23ub62uLy2ub21ub62uL22ub23ub22ur62ub22ub21ub22uL62ub23ub22uby2ub21ub22ur23ub22ub22uL22uby1ub22ub22ur21ub22ub22uL22ub22ub22ub22ub21ub62ub22ub22ub62ub22ub22uby2ub22ub22ub22uL22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub22ub1USzZ3AAAAyHRSTlMAAQIDBAUGBwgJCgsMDQ4QERMUFhcYGRobHB0eHyAhIiMkJSYoKSorLC0uLzIzNDY4OTo7PUFCQ0RFRkdISktMTU5PUVNVVldYWV1fYGJmZ2lqa21ucHFyc3R1dnd6fH2AgYKDhIWGh4iJioyOj5CRk5WWl5mbnJ2en6CipKWmp6iqq62ur7GztLW2t7i5u7y9vr/AwcLDxMXHyMnKzM3Oz9DR1dfY2drb3N3e3+Hi4+Xm5+jq6+zt7u/w8fP09fb3+Pn6+/z9/kzG6qcAAAABYktHRAH/Ai3eAAAD5klEQVRo3u2ZZ1sTQRCAJwEJROy9YkdUbNg7ig0F7NgLKold7F1j74goinqIgoK9V1BRI5mf5d7lEuaO5KJBn9yHeb8w7GyG99nb7O4tAAzDMAzDMAzDMAzDMAzDhEXHrxgId6J5FI9jYC6bxjDFE0QRx5vE0CoFM8RKmzkUszA42aYwbPraQLGqjRkUN6MRu0xg2P27oWJtcuQVz6ExNyyRNhyNoZgaYcNG5XTAXD4KSevTuP/xh51esmC9N7A5nCkAnZzOsWpmhK/nQuLyzO4vEPOAtK/0Nw9yrvaFqTv2ZcXookl5vig0au1r8MMbQD6eB1iNbyeomVVqx5afiMp0UmE8af/SwdeaiZ/VwT8lJ8rb0ij6hBw9aPdnii5XEeJJ1xqheFt+bjAD3W0sj3FjP5frIb53udLUjjuJSZHme3GeZA7VU5yDKF324EElKvFGWXJUW9c5FGIUmogfPzBd+dX2HrOHoaeHsgwW+3v1+0VWlwGaAr1+1qU8Q/SKlzDfAuuwSo3WytEFLLBADlZbwlOELVi6G/NBp1hAhmqPrsIWkrtj1SneRSfAZMQ4EW0Q01GOJNwopiNi4zAVExFrcJpOMY3udK11FZq9JdlZOsVSzFXE7CJyANgTEixQImtPRIwPUxGKEd/ZtIq2SiKx2PB08aapoaJC2IpnxBIzSEQZKD8RjeIK4lBRf7GIukfyDgPF2GSBNXxFmUwRDUWcrVWMqSIKGQFqTCP5mibBFXvLHezhK8qLzijv8nJVN4q7iUJBgBqnSf6YwSh2e/y6QYrqXIwTa7Snp1ax1WfikFavxEiS/dbZcC6m/gvFdPxW7p2M5Bu9hEg8idVViC4j2TXw/xWv4pFF+KaRVjGmglis0FVYQHLP7fUUHX5Fp19xQ0MUu3lwXGu38jTp0j2JaFS31xRo8ZHkZup3l+t4GGA+/rRCkT8qxKMA89BtDWfRcYq96lU0nMWLOkW4SDwOagrkBTrVZuJ3udxkUe9XXs4nvAK+SGxcOVibl/NR/VL+7aKDUS9wE8BUrO2sU+xDd+LB5PNJdPceWHeMUNgOzZXDWrXY1uuiZsrR88sfv0ikSJI8f4olhWRJSgKIvSmJpTFb2k/6bSODdYscAK6Q9r3+1inecssA4h2lFQe6yG1ytN8b5ZZWHuj6zw+/zd8Rl53LfWw103vq3JDvLksj/XoVdT+E4aPI35kMD6GYaoJ3/ZOGhvlmuDBJqDEwdCeZ4t4p10Bxmzku7+JfBjX80MIkd6CzgirONctFsuV2EMOyaNNcdg8Octk9xkT/1eibHIj+wDAMwzAMwzAMwzAMwzBMA/gN26DVpjopEcQAAAAASUVORK5CYII="/></div>
+                <cite class="review-text">Ad oggi le migliori dashboard che ho trovato sul mercato. L’interfaccia è intuitiva e completa e consente di focalizzarsi sui dati realmente rilevanti risparmiando un sacco di tempo. Consiglio a tutti.</cite>
+                <div class="author-row"><div class="author-figure"></div><adress class="author-name"><stron>Carol Alexander 3</strong></adress></div>
+            </article>
+    
+        </div>
+    
+        <div class="slider-button-wrapper">
+            <button id="slider-btn-prev"><</button>
+            <button id="slider-btn-next">></button>
+        </div>
+    
+    </div>
+    
+    <script>
+        'use strict';
+    
+    // https://github.com/iamdustan/smoothscroll
+    (() => {
+      // aliases
+      var w = window;
+      var d = document;
+    
+      // return if scroll behavior is supported and polyfill is not forced
+      if (
+        'scrollBehavior' in d.documentElement.style &&
+        w.__forceSmoothScrollPolyfill__ !== true
+      ) {
+        return;
+      }
+    
+      // globals
+      var Element = w.HTMLElement || w.Element;
+      var SCROLL_TIME = 468;
+    
+      // object gathering original scroll methods
+      var original = {
+        scroll: w.scroll || w.scrollTo,
+        scrollBy: w.scrollBy,
+        elementScroll: Element.prototype.scroll || scrollElement,
+        scrollIntoView: Element.prototype.scrollIntoView
+      };
+    
+      // define timing method
+      var now =
+        w.performance && w.performance.now
+          ? w.performance.now.bind(w.performance)
+          : Date.now;
+    
+      /**
+       * indicates if a the current browser is made by Microsoft
+       * @method isMicrosoftBrowser
+       * @param {String} userAgent
+       * @returns {Boolean}
+       */
+      function isMicrosoftBrowser(userAgent) {
+        var userAgentPatterns = ['MSIE ', 'Trident/', 'Edge/'];
+    
+        return new RegExp(userAgentPatterns.join('|')).test(userAgent);
+      }
+    
+      /*
+       * IE has rounding bug rounding down clientHeight and clientWidth and
+       * rounding up scrollHeight and scrollWidth causing false positives
+       * on hasScrollableSpace
+       */
+      var ROUNDING_TOLERANCE = isMicrosoftBrowser(w.navigator.userAgent) ? 1 : 0;
+    
+      /**
+       * changes scroll position inside an element
+       * @method scrollElement
+       * @param {Number} x
+       * @param {Number} y
+       * @returns {undefined}
+       */
+      function scrollElement(x, y) {
+        this.scrollLeft = x;
+        this.scrollTop = y;
+      }
+    
+      /**
+       * returns result of applying ease math function to a number
+       * @method ease
+       * @param {Number} k
+       * @returns {Number}
+       */
+      function ease(k) {
+        return 0.5 * (1 - Math.cos(Math.PI * k));
+      }
+    
+      /**
+       * indicates if a smooth behavior should be applied
+       * @method shouldBailOut
+       * @param {Number|Object} firstArg
+       * @returns {Boolean}
+       */
+      function shouldBailOut(firstArg) {
+        if (
+          firstArg === null ||
+          typeof firstArg !== 'object' ||
+          firstArg.behavior === undefined ||
+          firstArg.behavior === 'auto' ||
+          firstArg.behavior === 'instant'
+        ) {
+          // first argument is not an object/null
+          // or behavior is auto, instant or undefined
+          return true;
+        }
+    
+        if (typeof firstArg === 'object' && firstArg.behavior === 'smooth') {
+          // first argument is an object and behavior is smooth
+          return false;
+        }
+    
+        // throw error when behavior is not supported
+        throw new TypeError(
+          'behavior member of ScrollOptions ' +
+            firstArg.behavior +
+            ' is not a valid value for enumeration ScrollBehavior.'
+        );
+      }
+    
+      /**
+       * indicates if an element has scrollable space in the provided axis
+       * @method hasScrollableSpace
+       * @param {Node} el
+       * @param {String} axis
+       * @returns {Boolean}
+       */
+      function hasScrollableSpace(el, axis) {
+        if (axis === 'Y') {
+          return el.clientHeight + ROUNDING_TOLERANCE < el.scrollHeight;
+        }
+    
+        if (axis === 'X') {
+          return el.clientWidth + ROUNDING_TOLERANCE < el.scrollWidth;
+        }
+      }
+    
+      /**
+       * indicates if an element has a scrollable overflow property in the axis
+       * @method canOverflow
+       * @param {Node} el
+       * @param {String} axis
+       * @returns {Boolean}
+       */
+      function canOverflow(el, axis) {
+        var overflowValue = w.getComputedStyle(el, null)['overflow' + axis];
+    
+        return overflowValue === 'auto' || overflowValue === 'scroll';
+      }
+    
+      /**
+       * indicates if an element can be scrolled in either axis
+       * @method isScrollable
+       * @param {Node} el
+       * @param {String} axis
+       * @returns {Boolean}
+       */
+      function isScrollable(el) {
+        var isScrollableY = hasScrollableSpace(el, 'Y') && canOverflow(el, 'Y');
+        var isScrollableX = hasScrollableSpace(el, 'X') && canOverflow(el, 'X');
+    
+        return isScrollableY || isScrollableX;
+      }
+    
+      /**
+       * finds scrollable parent of an element
+       * @method findScrollableParent
+       * @param {Node} el
+       * @returns {Node} el
+       */
+      function findScrollableParent(el) {
+        while (el !== d.body && isScrollable(el) === false) {
+          el = el.parentNode || el.host;
+        }
+    
+        return el;
+      }
+    
+      /**
+       * self invoked function that, given a context, steps through scrolling
+       * @method step
+       * @param {Object} context
+       * @returns {undefined}
+       */
+      function step(context) {
+        var time = now();
+        var value;
+        var currentX;
+        var currentY;
+        var elapsed = (time - context.startTime) / SCROLL_TIME;
+    
+        // avoid elapsed times higher than one
+        elapsed = elapsed > 1 ? 1 : elapsed;
+    
+        // apply easing to elapsed time
+        value = ease(elapsed);
+    
+        currentX = context.startX + (context.x - context.startX) * value;
+        currentY = context.startY + (context.y - context.startY) * value;
+    
+        context.method.call(context.scrollable, currentX, currentY);
+    
+        // scroll more if we have not reached our destination
+        if (currentX !== context.x || currentY !== context.y) {
+          w.requestAnimationFrame(step.bind(w, context));
+        }
+      }
+    
+      /**
+       * scrolls window or element with a smooth behavior
+       * @method smoothScroll
+       * @param {Object|Node} el
+       * @param {Number} x
+       * @param {Number} y
+       * @returns {undefined}
+       */
+      function smoothScroll(el, x, y) {
+        var scrollable;
+        var startX;
+        var startY;
+        var method;
+        var startTime = now();
+    
+        // define scroll context
+        if (el === d.body) {
+          scrollable = w;
+          startX = w.scrollX || w.pageXOffset;
+          startY = w.scrollY || w.pageYOffset;
+          method = original.scroll;
+        } else {
+          scrollable = el;
+          startX = el.scrollLeft;
+          startY = el.scrollTop;
+          method = scrollElement;
+        }
+    
+        // scroll looping over a frame
+        step({
+          scrollable: scrollable,
+          method: method,
+          startTime: startTime,
+          startX: startX,
+          startY: startY,
+          x: x,
+          y: y
+        });
+      }
+    
+      // ORIGINAL METHODS OVERRIDES
+      // w.scroll and w.scrollTo
+      w.scroll = w.scrollTo = function() {
+        // avoid action when no arguments are passed
+        if (arguments[0] === undefined) {
+          return;
+        }
+    
+        // avoid smooth behavior if not required
+        if (shouldBailOut(arguments[0]) === true) {
+          original.scroll.call(
+            w,
+            arguments[0].left !== undefined
+              ? arguments[0].left
+              : typeof arguments[0] !== 'object'
+                ? arguments[0]
+                : w.scrollX || w.pageXOffset,
+            // use top prop, second argument if present or fallback to scrollY
+            arguments[0].top !== undefined
+              ? arguments[0].top
+              : arguments[1] !== undefined
+                ? arguments[1]
+                : w.scrollY || w.pageYOffset
+          );
+    
+          return;
+        }
+    
+        // LET THE SMOOTHNESS BEGIN!
+        smoothScroll.call(
+          w,
+          d.body,
+          arguments[0].left !== undefined
+            ? ~~arguments[0].left
+            : w.scrollX || w.pageXOffset,
+          arguments[0].top !== undefined
+            ? ~~arguments[0].top
+            : w.scrollY || w.pageYOffset
+        );
+      };
+    
+      // w.scrollBy
+      w.scrollBy = function() {
+        // avoid action when no arguments are passed
+        if (arguments[0] === undefined) {
+          return;
+        }
+    
+        // avoid smooth behavior if not required
+        if (shouldBailOut(arguments[0])) {
+          original.scrollBy.call(
+            w,
+            arguments[0].left !== undefined
+              ? arguments[0].left
+              : typeof arguments[0] !== 'object' ? arguments[0] : 0,
+            arguments[0].top !== undefined
+              ? arguments[0].top
+              : arguments[1] !== undefined ? arguments[1] : 0
+          );
+    
+          return;
+        }
+    
+        // LET THE SMOOTHNESS BEGIN!
+        smoothScroll.call(
+          w,
+          d.body,
+          ~~arguments[0].left + (w.scrollX || w.pageXOffset),
+          ~~arguments[0].top + (w.scrollY || w.pageYOffset)
+        );
+      };
+    
+      // Element.prototype.scroll and Element.prototype.scrollTo
+      Element.prototype.scroll = Element.prototype.scrollTo = function() {
+        // avoid action when no arguments are passed
+        if (arguments[0] === undefined) {
+          return;
+        }
+    
+        // avoid smooth behavior if not required
+        if (shouldBailOut(arguments[0]) === true) {
+          // if one number is passed, throw error to match Firefox implementation
+          if (typeof arguments[0] === 'number' && arguments[1] === undefined) {
+            throw new SyntaxError('Value could not be converted');
+          }
+    
+          original.elementScroll.call(
+            this,
+            // use left prop, first number argument or fallback to scrollLeft
+            arguments[0].left !== undefined
+              ? ~~arguments[0].left
+              : typeof arguments[0] !== 'object' ? ~~arguments[0] : this.scrollLeft,
+            // use top prop, second argument or fallback to scrollTop
+            arguments[0].top !== undefined
+              ? ~~arguments[0].top
+              : arguments[1] !== undefined ? ~~arguments[1] : this.scrollTop
+          );
+    
+          return;
+        }
+    
+        var left = arguments[0].left;
+        var top = arguments[0].top;
+    
+        // LET THE SMOOTHNESS BEGIN!
+        smoothScroll.call(
+          this,
+          this,
+          typeof left === 'undefined' ? this.scrollLeft : ~~left,
+          typeof top === 'undefined' ? this.scrollTop : ~~top
+        );
+      };
+    
+      // Element.prototype.scrollBy
+      Element.prototype.scrollBy = function() {
+        // avoid action when no arguments are passed
+        if (arguments[0] === undefined) {
+          return;
+        }
+    
+        // avoid smooth behavior if not required
+        if (shouldBailOut(arguments[0]) === true) {
+          original.elementScroll.call(
+            this,
+            arguments[0].left !== undefined
+              ? ~~arguments[0].left + this.scrollLeft
+              : ~~arguments[0] + this.scrollLeft,
+            arguments[0].top !== undefined
+              ? ~~arguments[0].top + this.scrollTop
+              : ~~arguments[1] + this.scrollTop
+          );
+    
+          return;
+        }
+    
+        this.scroll({
+          left: ~~arguments[0].left + this.scrollLeft,
+          top: ~~arguments[0].top + this.scrollTop,
+          behavior: arguments[0].behavior
+        });
+      };
+    
+      // Element.prototype.scrollIntoView
+      Element.prototype.scrollIntoView = function() {
+        // avoid smooth behavior if not required
+        if (shouldBailOut(arguments[0]) === true) {
+          original.scrollIntoView.call(
+            this,
+            arguments[0] === undefined ? true : arguments[0]
+          );
+    
+          return;
+        }
+    
+        // LET THE SMOOTHNESS BEGIN!
+        var scrollableParent = findScrollableParent(this);
+        var parentRects = scrollableParent.getBoundingClientRect();
+        var clientRects = this.getBoundingClientRect();
+    
+        if (scrollableParent !== d.body) {
+          // reveal element inside parent
+          smoothScroll.call(
+            this,
+            scrollableParent,
+            scrollableParent.scrollLeft + clientRects.left - parentRects.left,
+            scrollableParent.scrollTop + clientRects.top - parentRects.top
+          );
+    
+          // reveal parent in viewport unless is fixed
+          if (w.getComputedStyle(scrollableParent).position !== 'fixed') {
+            w.scrollBy({
+              left: parentRects.left,
+              top: parentRects.top,
+              behavior: 'smooth'
+            });
+          }
+        } else {
+          // reveal element in viewport
+          w.scrollBy({
+            left: clientRects.left,
+            top: clientRects.top,
+            behavior: 'smooth'
+          });
+        }
+      };
+    })();
+    
+    document.addEventListener('DOMContentLoaded', init);
+    
+    function init() {
+        window.testimonialSlides = document.getElementsByClassName('review');
+        window.currentTestimonialSlide = 0;
+        document.getElementById('slider-btn-prev').addEventListener('click', prevSlide);
+        document.getElementById('slider-btn-next').addEventListener('click', nextSlide);
+    };
+    
+    function prevSlide() {
+        if(window.currentTestimonialSlide <= 0) {
+            window.currentTestimonialSlide = window.testimonialSlides.length - 1;
+        } else {
+            window.currentTestimonialSlide -= 1;
+        };
+        window.testimonialSlides[window.currentTestimonialSlide].scrollIntoView({behaviour: 'smooth', inline: 'center'});
+    };
+    
+    function nextSlide() {
+        if(window.currentTestimonialSlide >= window.testimonialSlides.length - 1) {
+            window.currentTestimonialSlide = 0;
+        } else {
+            window.currentTestimonialSlide += 1;
+        };
+        window.testimonialSlides[window.currentTestimonialSlide].scrollIntoView({behaviour: 'smooth', inline: 'center'});
+    };
+    </script>

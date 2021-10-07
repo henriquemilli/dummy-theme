@@ -17,7 +17,7 @@
         "commands": [
             {
                 "match": ".*/dummy-theme/.*",
-                "cmd": "sh ~/Github/dummy-theme/onsave.sh"
+                "cmd": "sh ~/Github/dummy-theme/shellscripts/onsave.sh"
             }
         ]
     }

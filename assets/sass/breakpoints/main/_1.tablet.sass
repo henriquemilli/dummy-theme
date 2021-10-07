@@ -1,0 +1,60 @@
+///////////local vars
+$t_padding_main_tb: 25px
+$t_padding_main_rl: t(30)
+$t_padding_hf_tb: 25px
+$t_padding_hf_rl: t(40)
+
+
+@media only screen and (min-width: $screen_t)
+    ///////////typography
+
+
+
+    ///////////elementor classes
+
+
+
+    ////////////global rules
+    .elementor-top-section //fix white line under the header
+        margin-top: -1px
+
+    .elementor-column-gap-default //resets elementor padding
+        > .elementor-column
+            > .elementor-element-populated
+                padding: 0
+
+    section.elementor-section.elementor-section-boxed //resets elementor max-width
+        > .elementor-container
+            max-width: none
+
+    .elementor-widget-container //default margin
+        margin: $widget_margin
+
+    main //default page padding
+        .elementor-section-wrap
+            > .elementor-section
+                padding: $t_padding_main_tb $t_padding_main_rl
+
+
+    ///////////header
+    .elementor-location-header //mirrors default page right and left padding 
+        .elementor-section-wrap 
+            > .elementor-section
+                padding: $t_padding_hf_tb $t_padding_hf_rl
+                > div.elementor-container
+                    align-items: center
+        
+
+    ///////////footer
+    .elementor-location-footer //mirrors default page right and left padding 
+        .elementor-section-wrap 
+            > .elementor-section
+                padding:  $t_padding_hf_rl
+            
+            
+    ///////////home
+    //erase-me
+
+
+    ///////////page1
+    //erase-me

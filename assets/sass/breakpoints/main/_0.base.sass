@@ -1,0 +1,129 @@
+///////////local vars
+$b_padding_main_tb: 25px
+$b_padding_main_rl: b(30)
+$b_padding_hf_tb: 25px
+$b_padding_hf_rl: b(40)
+
+
+///////////typography
+
+
+
+///////////elementor classes
+.no-padding
+    padding: 0 !important
+    &--top
+        padding-top: 0 !important
+    &--right
+        padding-right: 0 !important
+    &--bottom
+        padding-bottom: 0 !important
+    &--left
+        padding-left: 0 !important
+
+.no-margin
+    .elementor-widget-container
+        margin: 0 !important
+    &--top
+        .elementor-widget-container
+            margin-top: 0 !important
+    &--right
+        .elementor-widget-container
+            margin-right: 0 !important
+    &--bottom
+        .elementor-widget-container
+            margin-bottom: 0 !important
+    &--left
+        .elementor-widget-container
+            margin-left: 0 !important
+
+.std-border
+	@include std_border
+	&--top
+		@include std_border('top')
+	&--right
+		@include std_border('right')
+	&--bottom
+		@include std_border('bottom')
+	&--left
+		@include std_border('left')
+
+.bg
+    &-white_1
+        background-color: $white_1
+    &-gray_1
+        color: $gray_1
+    &-black_1
+        background-color: $black_1   
+
+.text
+    &-white_1
+        color: $white_1    
+    &-gray_1
+        color: $gray_1
+    &-black_1
+        color: $black_1
+
+.button
+    .elementor-button
+        @include button()
+    &-gray
+        .elementor-button
+            @include button($gray_1)
+
+.shadow
+    @include shadow()
+    padding: b(50) b(30)
+    background-color: $white_1
+
+.full-screen
+    min-width: 100vw
+    min-height: 100vh
+    height: fit-content
+    width: fit-content
+
+
+////////////global rules
+.elementor-top-section //fix white line under the header
+    margin-top: -1px
+
+.elementor-column-gap-default //resets elementor padding
+	> .elementor-column
+		> .elementor-element-populated
+			padding: 0
+
+section.elementor-section.elementor-section-boxed //resets elementor max-width
+    > .elementor-container
+        max-width: none
+
+.elementor-widget-container //default margin
+    margin: $widget_margin
+
+main //default page padding
+    .elementor-section-wrap
+        > .elementor-section
+            padding: $b_padding_main_tb $b_padding_main_rl
+
+
+///////////header
+.elementor-location-header //mirrors default page right and left padding 
+    .elementor-section-wrap 
+        > .elementor-section
+            padding: $b_padding_hf_tb $b_padding_hf_rl
+            > div.elementor-container
+                align-items: center
+    
+
+///////////footer
+.elementor-location-footer //mirrors default page right and left padding 
+    .elementor-section-wrap 
+        > .elementor-section
+            padding:  $b_padding_hf_rl
+        
+        
+///////////home
+//erase-me
+
+
+///////////page1
+//erase-me

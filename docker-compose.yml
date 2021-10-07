@@ -1,15 +1,16 @@
 version: '2'
 services:
   mariadb:
-    image: docker.io/bitnami/mariadb:latest
+    image: docker.io/bitnami/mariadb
     volumes:
       - 'mariadb_data:/bitnami/mariadb'
     environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
       - MARIADB_USER=bn_wordpress
       - MARIADB_DATABASE=bitnami_wordpress
   wordpress:
-    image: docker.io/bitnami/wordpress-nginx:latest
+    image: docker.io/bitnami/wordpress
     ports:
       - '80:8080'
       - '443:8443'
@@ -18,11 +19,20 @@ services:
     depends_on:
       - mariadb
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - WORDPRESS_USERNAME=pixdata
+      - WORDPRESS_PASSWORD=admeliora
+      - WORDPRESS_EMAIL=digital@pixdata.io
       - WORDPRESS_DATABASE_HOST=mariadb
       - WORDPRESS_DATABASE_PORT_NUMBER=3306
       - WORDPRESS_DATABASE_USER=bn_wordpress
+      - ALLOW_EMPTY_PASSWORD=yes
       - WORDPRESS_DATABASE_NAME=bitnami_wordpress
+      - WORDPRESS_TABLE_PREFIX=pix_
+      - PHP_MAX_INPUT_VARS=5000
+      - PHP_MEMORY_LIMIT=1024M
+      - WORDPRESS_PLUGINS=force-update-check-for-plugins-and-themes,cloudflare,polylang,woocommerce,woocommerce-gateway-stripe,elementor
+
 volumes:
   mariadb_data:
     driver: local

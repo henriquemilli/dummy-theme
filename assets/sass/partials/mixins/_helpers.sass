@@ -1,0 +1,11 @@
+///
+// Default shadow 
+/// 
+@mixin shadow($radius: $border_radius, $shadow_x: $shadow_x, $shadow_y: $shadow_y, $shadow_blur: $shadow_blur, $shadow_color: $shadow_color)
+    box-shadow: $shadow_x $shadow_y $shadow_blur $shadow_color
+
+///
+// Default transition
+/// 
+@mixin transition($target: $transition_target, $time: $transition_time, $function: $transition_function)
+    transition: $target $time $function

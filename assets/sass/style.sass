@@ -1,7 +1,7 @@
 /*
  * Theme Name: Dummy 
- * Theme URL: dummy.com
- * Description: A Tailored theme for dummy - requires Hola! Elementor parent theme
+ * Theme URL: dummy.io
+ * Description: A Tailored theme for Dummy - requires Hola! Elementor parent theme
  * Author: Henrique Milli
  * Author URL: henriquemilli.com
  * Template: hola-theme
@@ -15,10 +15,25 @@
 @import "./partials/vars"
 @import "./partials/typography"
 @import "./partials/functions"
-@import "./partials/mixins"
+@import "./partials/mixins/_animations"
+@import "./partials/mixins/_helpers"
+@import "./partials/mixins/_style"
 
-//breakpoints
-@import "./breakpoints/0.base"
-@import "./breakpoints/1.tablet"
-@import "./breakpoints/2.desktop"
-@import "./breakpoints/custom"
+////reset
+@import "./reset/variables"
+@import "./reset/reset"
+@import "./reset/forms"
+@import "./reset/list"
+@import "./reset/table"
+
+//main breakpoints
+@import "./breakpoints/main/0.base"
+@import "./breakpoints/main/1.tablet"
+@import "./breakpoints/main/2.desktop"
+@import "./breakpoints/main/custom"
+
+//woo breakpoints
+@import "./breakpoints/woo/0.base"
+@import "./breakpoints/woo/1.tablet"
+@import "./breakpoints/woo/2.desktop"
+@import "./breakpoints/woo/custom"

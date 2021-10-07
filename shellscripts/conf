@@ -1,0 +1,4 @@
+KEY_PATH="~/.ssh/keys/aws_pix_euc.pem"
+BASENAME="dummy"
+IP="12.34.567.890"
+USER="bitnami"

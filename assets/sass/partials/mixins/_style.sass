@@ -1,0 +1,46 @@
+///
+// Styles buttons 
+/// 
+@mixin button($color: $primary-color)
+    height: fit-content
+    border-radius: $border_radius
+    border: none
+    background-color: $color
+    .elementor-button-text
+        line-height: 1
+        white-space: nowrap
+
+
+///
+// Provides side specific border or for the whole element 
+/// 
+@mixin std_border($side: false, $thickness: $border_size, $border_style: $border_style, $color: $border_color)
+	@if $side
+		border-#{$side}: $thickness $border_style $color
+	@else
+		border: $thickness $border_style $color
+
+
+///
+// Provides px to vw conversion for widht and height
+/// 
+@mixin wh($w, $h, $breakpoint)
+    @if $breakpoint == b
+        width: cav($w, $design_base_size)
+        height: cav($h, $design_base_size)
+    @if $breakpoint == t
+        width: cav($w, $design_tablet_size)
+        height: cav($h, $design_tablet_size)
+    @if $breakpoint == d
+        width: cav($w, $design_desktop_size)
+        height: cav($h, $design_desktop_size)
+
+
+///
+// Styles input fields
+/// 
+@mixin input($w, $h, $breakpoint)
+    @include wh($w, $h, $breakpoint)
+    border: none
+    border-radius: $input_radius
+    background-color: $white_1

@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    
+    function validate() {
+
+        check0 = document.getElementById('form-field-field_2c73305-0');
+        check1 = document.getElementById('form-field-field_2c73305-1');
+        sendBtn = document.getElementById('elementor-send');
+
+        if (check0.checked && check1.checked) {
+            sendBtn.click();
+        } else if (check0.checked) {
+            alert("Per ricevere il tuo messaggio abbiamo bisogno del consenso!");
+        } else if (check1.checked) {
+            alert("Per ricevere il tuo messaggio abbiamo bisogno del consenso!");
+        } else {
+            alert("Per ricevere il tuo messaggio abbiamo bisogno del consenso!");
+        }
+        
+    }
+
+</script>
+
+<p>
+    Per ulteriori informazioni su come xxxxx processa i tuoi dati personali, ti preghiamo di consultare la <a href="/privacy-policy/">Privacy Policy</a>.<br>
+    Puoi disiscriverti in qualsiasi momento.
+</p>
+
+<div id="btn-contact-send" onclick="validate()">Invia</div>

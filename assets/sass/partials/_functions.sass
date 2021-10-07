@@ -1,7 +1,36 @@
+//original UI size
+$design_base_size: 375
+$design_tablet_size: 768
+$design_desktop_size: 1024
+//px ratio to rem
+$px_rem_ratio: 16
+
 ///
-// Returns vw in relation to screen
+// Convert pixels to vw
 ///
-@function cav($measure, $screen)
-    $vpw: ($measure / $screen) * 100vw
-    $vpw: $vpw * $cav_correction
-    @return $vpw
+@function cav($pixels, $screen)
+    @return ($pixels / $screen) * 100vw
+
+///
+// cav shortcut for base
+///
+@function b($pixels)
+    @return cav($pixels, $design_base_size)
+
+///
+// cav shortcut for tablet
+///
+@function t($pixels)
+    @return cav($pixels, $design_tablet_size)
+
+///
+// cav shortcut for desktop
+///
+@function d($pixels)
+    @return cav($pixels, $design_desktop_size)
+
+///
+// convert pixels to rem
+///
+@function rem($pixels)
+    @return ( $pixels / $px_rem_ratio ) * 1rem
